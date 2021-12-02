@@ -8,6 +8,7 @@ Created on Tue Jun 18 09:44:40 2019
 ###########################_Einbindung_import_#################################
 import tkinter
 from tkinter import *
+from tkinter import filedialog
 #import tkinter as tk
 from PIL import Image, ImageTk
 
@@ -30,6 +31,11 @@ def start_0():
     pass
 def stop_0():
     pass
+def dateipfad_0():
+    home = os.path.expanduser("/home/akka-pi/Dokumente/Testautomatisierung_AKKA/Programme/src/CAN_Trace_PEAK/dbc_data/EV_CAN")
+    datei_pfad_0 = filedialog.askopenfilename(initialdir=home,
+                                            title="Datei-Auswahl")
+    fenster.text1.insert(END, datei_pfad_0)
 #Checkbutton überprüfen
 def sigName0():
     statCheckButton0 = signalname0.get()
@@ -48,6 +54,11 @@ def start_1():
     pass
 def stop_1():
     pass
+def dateipfad_1():
+    home = os.path.expanduser("/home/akka-pi/Dokumente/Testautomatisierung_AKKA/Programme/src/CAN_Trace_PEAK/dbc_data/Antrieb_CAN")
+    datei_pfad_1 = filedialog.askopenfilename(  initialdir=home,
+                                                title="Datei-Auswahl")
+    fenster.text2.insert(END, datei_pfad_1)
 #Checkbutton überprüfen
 def sigName1():
     statCheckButton1 = signalname1.get()
@@ -66,6 +77,11 @@ def start_2():
     pass
 def stop_2():
     pass
+def dateipfad_2():
+    home = os.path.expanduser("/home/akka-pi/Dokumente/Testautomatisierung_AKKA/Programme/src/CAN_Trace_PEAK/dbc_data/Komfort_CAN")
+    datei_pfad_2 = filedialog.askopenfilename(  initialdir=home,
+                                                title="Datei-Auswahl")
+    fenster.text3.insert(END, datei_pfad_2)
 #Checkbutton überprüfen
 def sigName2():
     statCheckButton2 = signalname2.get()
@@ -84,6 +100,11 @@ def start_3():
     pass
 def stop_3():
     pass
+def dateipfad_3():
+    home = os.path.expanduser("/home/akka-pi/Dokumente/Testautomatisierung_AKKA/Programme/src/CAN_Trace_PEAK/dbc_data/Diagnose_CAN")
+    datei_pfad_3 = filedialog.askopenfilename(  initialdir=home,
+                                                title="Datei-Auswahl")
+    fenster.text4.insert(END, datei_pfad_3)
 #Checkbutton überprüfen
 def sigName3():
     statCheckButton3 = signalname3.get()
@@ -133,7 +154,7 @@ def log_CANALL():
 fenster = Tk()
 ##Fenstergröße bestimmen
 #Maße des Hauptfensters
-x_size = 930     #Standard auf 750
+x_size = 1050     #Standard auf 750
 y_size = 720    #Standard auf 500
 fenster.geometry('{}x{}'.format(x_size, y_size))
 ###############################################################################
@@ -288,6 +309,16 @@ fenster.button2 = Button(labelframe_widget0,
                          command=stop_0,
                          bg='yellow').grid(row=1, column=0, padx=padx_x, pady=pady_y)
 
+fenster.button_pfad0 = Button(labelframe_widget0,
+                         text='DBC-Pfad',
+                         height=button_hoehe,
+                         width = button_breite,
+                         borderwidth=button_rahmenbreite,
+                         relief=button_relief,
+                         cursor="dot",
+                         command=dateipfad_0,
+                         bg='orange').grid(row=0, rowspan=2, column=1, padx=padx_x, pady=pady_y)
+
 ##Text-Feld für die Ausgabe des Ergebnisses mit Scrollbar
 fenster.scrollbar0 = Scrollbar(labelframe_widget0,
                               orient = "vertical")
@@ -300,8 +331,8 @@ fenster.text1 = Text(labelframe_widget0,
                      yscrollcommand = fenster.scrollbar0.set)
 
 fenster.scrollbar0["command"] = fenster.text1.yview  #Command nach text1 damit scrollbar das attribute 'text1' hat
-fenster.text1.grid(row=0, rowspan=2, column=1)
-fenster.scrollbar0.grid(row=0, rowspan=2, column=1, sticky = 'ns')
+fenster.text1.grid(row=0, rowspan=2, column=2)
+fenster.scrollbar0.grid(row=0, rowspan=2, column=2, sticky = 'ns')
 
 signalname0 = StringVar()
 signalname0.set("OffLogCAN0")
@@ -313,7 +344,7 @@ fenster.checkbutton0 = Checkbutton(labelframe_widget0,
                                   onvalue = "OnLogCAN0",
                                   offvalue = "OffLogCAN0",
                                   command = sigName0)
-fenster.checkbutton0.grid(row=0,rowspan=2,column=2, padx=10, pady=15, sticky=NW)
+fenster.checkbutton0.grid(row=0,rowspan=2,column=3, padx=10, pady=15, sticky=NW)
 
 ###################################################################################
 ##Widget frame_CAN_1
@@ -345,6 +376,16 @@ fenster.button4 = Button(labelframe_widget1,
                          command=stop_1,
                          bg='yellow').grid(row=1, column=0, padx=padx_x, pady=pady_y)
 
+fenster.button_pfad1 = Button(labelframe_widget1,
+                         text='DBC-Pfad',
+                         height=button_hoehe,
+                         width = button_breite,
+                         borderwidth=button_rahmenbreite,
+                         relief=button_relief,
+                         cursor="dot",
+                         command=dateipfad_1,
+                         bg='orange').grid(row=0, rowspan=2, column=1, padx=padx_x, pady=pady_y)
+
 ##Text-Feld für die Ausgabe des Ergebnisses mit Scrollbar
 fenster.scrollbar1 = Scrollbar(labelframe_widget1,
                               orient = "vertical")
@@ -357,8 +398,8 @@ fenster.text2 = Text(labelframe_widget1,
                      yscrollcommand = fenster.scrollbar1.set)
 
 fenster.scrollbar1["command"] = fenster.text2.yview  #Command nach text1 damit scrollbar das attribute 'text2' hat
-fenster.text2.grid(row=0, rowspan = 2, column=1)
-fenster.scrollbar1.grid(row=0, rowspan = 2, column=1, sticky = 'ns')
+fenster.text2.grid(row=0, rowspan = 2, column=2)
+fenster.scrollbar1.grid(row=0, rowspan=2, column=2, sticky = 'ns')
 
 signalname1 = StringVar()
 signalname1.set("OffLogCAN1")
@@ -370,7 +411,7 @@ fenster.checkbutton1 = Checkbutton(labelframe_widget1,
                                   onvalue = "OnLogCAN1",
                                   offvalue = "OffLogCAN1",
                                   command = sigName1)
-fenster.checkbutton1.grid(row=0,rowspan=2,column=2, padx=10, pady=15, sticky=NW)
+fenster.checkbutton1.grid(row=0, rowspan=2, column=3, padx=10, pady=15, sticky=NW)
 
 ###################################################################################
 ##Widget frame_CAN_2
@@ -402,6 +443,16 @@ fenster.button6 = Button(labelframe_widget2,
                          command=stop_2,
                          bg='yellow').grid(row=1, column=0, padx=padx_x, pady=pady_y)
 
+fenster.button_pfad2 = Button(labelframe_widget2,
+                         text='DBC-Pfad',
+                         height=button_hoehe,
+                         width = button_breite,
+                         borderwidth=button_rahmenbreite,
+                         relief=button_relief,
+                         cursor="dot",
+                         command=dateipfad_2,
+                         bg='orange').grid(row=0, rowspan=2, column=1, padx=padx_x, pady=pady_y)
+
 ##Text-Feld für die Ausgabe des Ergebnisses mit Scrollbar
 fenster.scrollbar2 = Scrollbar(labelframe_widget2,
                               orient = "vertical")
@@ -414,8 +465,8 @@ fenster.text3 = Text(labelframe_widget2,
                      yscrollcommand = fenster.scrollbar2.set)
 
 fenster.scrollbar2["command"] = fenster.text3.yview  #Command nach text1 damit scrollbar das attribute 'text2' hat
-fenster.text3.grid(row=0, rowspan = 2, column=1)
-fenster.scrollbar2.grid(row=0, rowspan = 2, column=1, sticky = 'ns')
+fenster.text3.grid(row=0, rowspan=2, column=2)
+fenster.scrollbar2.grid(row=0, rowspan=2, column=2, sticky = 'ns')
 
 signalname2 = StringVar()
 signalname2.set("OffLogCAN2")
@@ -427,7 +478,7 @@ fenster.checkbutton2 = Checkbutton(labelframe_widget2,
                                   onvalue = "OnLogCAN2",
                                   offvalue = "OffLogCAN2",
                                   command = sigName2)
-fenster.checkbutton2.grid(row=0,rowspan=2,column=2, padx=10, pady=15, sticky=NW)
+fenster.checkbutton2.grid(row=0, rowspan=2, column=3, padx=10, pady=15, sticky=NW)
 
 ###################################################################################
 ##Widget frame_CAN_3
@@ -459,6 +510,16 @@ fenster.button8 = Button(labelframe_widget3,
                          command=stop_3,
                          bg='yellow').grid(row=1, column=0, padx=padx_x, pady=pady_y)
 
+fenster.button_pfad3 = Button(labelframe_widget3,
+                         text='DBC-Pfad',
+                         height=button_hoehe,
+                         width = button_breite,
+                         borderwidth=button_rahmenbreite,
+                         relief=button_relief,
+                         cursor="dot",
+                         command=dateipfad_3,
+                         bg='orange').grid(row=0, rowspan=2, column=1, padx=padx_x, pady=pady_y)
+
 ##Text-Feld für die Ausgabe des Ergebnisses mit Scrollbar
 fenster.scrollbar3 = Scrollbar(labelframe_widget3,
                               orient = "vertical")
@@ -471,8 +532,8 @@ fenster.text4 = Text(labelframe_widget3,
                      yscrollcommand = fenster.scrollbar3.set)
 
 fenster.scrollbar3["command"] = fenster.text4.yview  #Command nach text1 damit scrollbar das attribute 'text2' hat
-fenster.text4.grid(row=0, rowspan = 2, column=1)
-fenster.scrollbar3.grid(row=0, rowspan = 2, column=1, sticky = 'ns')
+fenster.text4.grid(row=0, rowspan = 2, column=2)
+fenster.scrollbar3.grid(row=0, rowspan = 2, column=2, sticky = 'ns')
 
 signalname3 = StringVar()
 signalname3.set("OffLogCAN3")
@@ -484,7 +545,7 @@ fenster.checkbutton3 = Checkbutton(labelframe_widget3,
                                   onvalue = "OnLogCAN3",
                                   offvalue = "OffLogCAN3",
                                   command = sigName3)
-fenster.checkbutton3.grid(row=0,rowspan=2,column=2, padx=10, pady=15, sticky=NW)
+fenster.checkbutton3.grid(row=0, rowspan=2, column=3, padx=10, pady=15, sticky=NW)
 
 ###################################################################################
 ##Widget frame_GUI
