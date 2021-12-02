@@ -11,6 +11,7 @@ from tkinter import *
 from tkinter import filedialog
 #import tkinter as tk
 from PIL import Image, ImageTk
+import platform
 
 import time
 import os
@@ -23,6 +24,8 @@ import sRam
 ##########################_Objekte_############################################
 schreiben_sRam = sRam.RamSec()
 lesen_sRam = sRam.RamSec()
+
+system_info = sRam.System()
 
 ###############################################################################
 ###########################_Funktionen_########################################
@@ -156,7 +159,7 @@ fenster = Tk()
 #Maße des Hauptfensters
 x_size = 1050     #Standard auf 750
 y_size = 720    #Standard auf 500
-fenster.geometry('{}x{}'.format(x_size, y_size))
+#fenster.geometry('{}x{}'.format(x_size, y_size))
 ###############################################################################
 #Titel
 fenster.title('CAN-Trace')
