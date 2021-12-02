@@ -37,6 +37,10 @@ semaphor_sRam_Sema = threading.Semaphore(value = 1)    #Inhalt 1 für den Zugang
 ###############################_Main_##########################################
 ###############################################################################
 if __name__ == "__main__":
+    ##Systemsdaten abfragen
+    system = sRam.System()
+    system.plattform()
+
     ##Multiprocessing Manager
     m = Manager()
     q = m.Queue()

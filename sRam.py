@@ -8,13 +8,25 @@ Created on
 
 ###########################_Einbindung_import_#################################
 ###############################################################################
-#import time
+import time
+import platform
 
 ##Einbindung der Module
 #import main
 
 ###############################################################################
 ##################################_CLASS_######################################
+##Systemklasse
+class System():
+    sys_vers = []
+    python_vers = []
+
+    def plattform(self):
+        self.sys_vers.append(platform.platform())
+        self.python_vers.append(platform.python_version())
+        print(self.sys_vers[-1])
+        print(self.python_vers[-1])
+###############################################################################
 ##Befehlsklasse
 class RamSec():
     start_all = [0]
