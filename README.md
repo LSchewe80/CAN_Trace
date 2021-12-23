@@ -1,6 +1,6 @@
 # CAN_Trace
 
-Für Langzeitmessungen am Fahrzeug soll ein Datenlogger, Anzeige der der Traces und Grafikanzeige erstellt werden.
+Für Langzeitmessungen am Fahrzeug soll ein Datenlogger, Anzeige der Traces und Grafikanzeige erstellt werden.
 
 
 ## Aktuelle Übersicht der .py - Dateien
