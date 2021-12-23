@@ -65,9 +65,33 @@ class CAN_1(RamSec):
         self.start_can1.clear()
         self.stop_can1.clear()
 
-    def funcSec(self, start_can1_content, stop_content):
+    def funcSec(self, start_can1_content, stop_can1_content):
         self.start_can1.append(start_can1_content)
-        self.stop_can1.append(stop_content)
+        self.stop_can1.append(stop_can1_content)
+###############################################################################
+class CAN_2(RamSec):
+    start_can2 = [0]
+    stop_can2 = [1]
+
+    def funcClear(self):
+        self.start_can2.clear()
+        self.stop_can2.clear()
+
+    def funcSec(self, start_can2_content, stop_can2_content):
+        self.start_can1.append(start_can2_content)
+        self.stop_can1.append(stop_can2_content)
+###############################################################################
+class CAN_3(RamSec):
+    start_can3 = [0]
+    stop_can3 = [1]
+
+    def funcClear(self):
+        self.start_can3.clear()
+        self.stop_can3.clear()
+
+    def funcSec(self, start_can3_content, stop_can3_content):
+        self.start_can1.append(start_can3_content)
+        self.stop_can1.append(stop_can3_content)
 ###############################################################################
 class CAN_Data():
     pass
